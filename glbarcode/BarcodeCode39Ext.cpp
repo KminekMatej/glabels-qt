@@ -1,6 +1,6 @@
 /*  BarcodeCode39Ext.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of glbarcode++.
  *
@@ -80,7 +80,7 @@ namespace glbarcode
 	{
 		for (char c : rawData)
 		{
-			if ( (c < 0) || (c > 0x7F) )
+			if ( c < 0 )
 			{
 				return false;
 			}

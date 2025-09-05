@@ -1,6 +1,6 @@
 /*  StartupView.cpp
  *
- *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -52,6 +52,7 @@ namespace glabels
 		{
 			QString basename = QFileInfo( filename ).completeBaseName();
 			auto* action = new QAction( basename, this );
+			action->setIcon( QIcon::fromTheme( "glabels" ) );
 			action->setData( filename );
 			connect( action, SIGNAL(triggered()), this, SLOT(onOpenRecentAction()) );
 			recentMenu->addAction( action );

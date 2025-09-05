@@ -1,6 +1,6 @@
 /*  Renderer.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of glbarcode++.
  *
@@ -41,7 +41,7 @@ void glbarcode::Renderer::render( double w, double h, const std::list<DrawingPri
 		}
 		else if ( auto* text = dynamic_cast<DrawingPrimitiveText*>(*primitive) )
 		{
-			drawText( text->x(), text->y(), text->size(), text->text() );
+			drawText( text->x(), text->y(), text->size(), text->text(), text->halign() );
 		}
 		else if ( auto* ring = dynamic_cast<DrawingPrimitiveRing*>(*primitive) )
 		{

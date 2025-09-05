@@ -1,6 +1,6 @@
 /*  FrameEllipse.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -71,17 +71,13 @@ namespace glabels
 				QString wStr = StrUtil::formatFraction( mW.in() );
 				QString hStr = StrUtil::formatFraction( mH.in() );
 
-				return QString().sprintf( "%s x %s %s",
-				                          qPrintable(wStr),
-				                          qPrintable(hStr),
-				                          qPrintable(units.toTrName()) );
+				return QString("%1 x %2 %3").arg(wStr).arg(hStr).arg(units.toTrName());
 			}
 			else
 			{
-				return QString().sprintf( "%.5g x %.5g %s",
-				                          mW.inUnits(units),
-				                          mH.inUnits(units),
-				                          qPrintable(units.toTrName()) );
+				return QString("%1 x %2 %3").arg(mW.inUnits(units), 0, 'g', 5)
+			                                 .arg(mH.inUnits(units), 0, 'g', 5)
+				                         .arg(units.toTrName());
 			}
 		}
 

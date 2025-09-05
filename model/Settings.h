@@ -1,6 +1,6 @@
 /*  Settings.h
  *
- *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -24,6 +24,7 @@
 
 #include "Distance.h"
 
+#include <QListView>
 #include <QSettings>
 #include <QStringList>
 
@@ -42,7 +43,8 @@ namespace glabels
 	
 		public:
 			enum PageSizeFamily { ISO, US, };
-
+			enum GridOrigin { ORIGIN_TL, ORIGIN_CENTER };
+			
 
 			/////////////////////////////////
 			// Life Cycle
@@ -87,6 +89,9 @@ namespace glabels
 			static QStringList searchCategoryList();
 			static void setSearchCategoryList( const QStringList& searchCategoryList );
 
+			static QListView::ViewMode templatePickerMode();
+			static void setTemplatePickerMode( QListView::ViewMode viewMode );
+
 			static QStringList recentTemplateList();
 			static void addToRecentTemplateList( const QString& name );
 
@@ -94,7 +99,17 @@ namespace glabels
 			static QStringList recentFileList();
 			static void addToRecentFileList( const QString& filePath );
 
+			static QString recentPrinter();
+			static void setRecentPrinter( const QString& printer );
 
+			static GridOrigin gridOrigin();
+			static void setGridOrigin( GridOrigin origin );
+
+			static Distance gridSpacing();
+			static void setGridSpacing( Distance spacing );
+			static void resetGridSpacing();
+			
+			
 		private:
 			static Settings* mInstance;
 			static const int mMaxRecentFiles{5};

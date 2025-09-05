@@ -1,6 +1,6 @@
 /*  Template.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -73,6 +73,7 @@ namespace glabels
 			QString part() const;
 			QString description() const;
 
+			QString paperDescription( const Units& units ) const;
 			QString paperId() const;
 			Distance pageWidth() const;
 			Distance pageHeight() const;
@@ -112,11 +113,12 @@ namespace glabels
 			Distance mPageWidth;
 			Distance mPageHeight;
 			Distance mRollWidth;
-			bool     mIsSizeIso;
-			bool     mIsSizeUs;
-			bool     mIsRoll;
 
-			bool     mIsUserDefined;
+			bool     mIsSizeIso{ false };
+			bool     mIsSizeUs{ false };
+			bool     mIsRoll{ false };
+
+			bool     mIsUserDefined{ false };
 
 			QString mEquivPart;
 			QString mName;

@@ -1,6 +1,6 @@
 /*  Renderer.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of glbarcode++.
  *
@@ -132,7 +132,7 @@ namespace glbarcode
 		 * @param[in] size Font size of text (points)
 		 * @param[in] text Text
 		 */
-		virtual void drawText( double x, double y, double size, const std::string& text ) = 0;
+		virtual void drawText( double x, double y, double size, const std::string& text, HAlign halign = H_ALIGN_CENTER ) = 0;
 
 
 		/**

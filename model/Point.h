@@ -1,6 +1,6 @@
 /*  Point.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -23,6 +23,8 @@
 
 
 #include "Distance.h"
+
+#include <QMetaType>
 
 
 namespace glabels
@@ -50,6 +52,9 @@ namespace glabels
 
 	}
 }
+
+
+Q_DECLARE_METATYPE( glabels::model::Point )
 
 
 #endif // model_Point_h

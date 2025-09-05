@@ -1,6 +1,6 @@
 /*  DrawingPrimitives.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of glbarcode++.
  *
@@ -81,8 +81,8 @@ namespace glbarcode
 
 
 
-	DrawingPrimitiveText::DrawingPrimitiveText( double x, double y, double size, const std::string& text )
-		: DrawingPrimitive( x, y ), mSize(size), mText(text)
+	DrawingPrimitiveText::DrawingPrimitiveText( double x, double y, double size, const std::string& text, HAlign halign )
+		: DrawingPrimitive( x, y ), mSize(size), mText(text), mHalign(halign)
 	{
 	}
 
@@ -96,6 +96,12 @@ namespace glbarcode
 	const std::string& DrawingPrimitiveText::text() const
 	{
 		return mText;
+	}
+
+
+	HAlign DrawingPrimitiveText::halign() const
+	{
+		return mHalign;
 	}
 
 

@@ -1,6 +1,6 @@
 /*  ModelBarcodeObject.cpp
  *
- *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -49,6 +49,7 @@ namespace glabels
 			const Distance pad = Distance::pt(4);
 			const Distance minW = Distance::pt(18);
 			const Distance minH = Distance::pt(18);
+			const double MIN_POINT_SIZE = 0.4; // Less than ~0.37 causes issues for QFontMetricsF
 		}
 
 
@@ -95,7 +96,7 @@ namespace glabels
 		                                        bool                  bcChecksumFlag,
 		                                        QString               bcData,
 		                                        const ColorNode&      bcColorNode,
-		                                        const QMatrix&        matrix )
+		                                        const QTransform&     matrix )
 		: ModelObject( x0, y0, w, h, lockAspectRatio, matrix )
 		{
 			mOutline = new Outline( this );
@@ -508,7 +509,7 @@ namespace glabels
 			{
 				double scaleX = wPts / textRect.width();
 				double scaleY = hPts / textRect.height();
-				font.setPointSizeF( 6 * std::min( scaleX, scaleY ) );
+				font.setPointSizeF( std::max( 6 * std::min( scaleX, scaleY ), MIN_POINT_SIZE ) );
 			}
 
 			//

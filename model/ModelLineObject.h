@@ -1,6 +1,6 @@
 /*  ModelLineObject.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -49,7 +49,7 @@ namespace glabels
 			                 const Distance&  h,
 			                 const Distance&  lineWidth,
 			                 const ColorNode& lineColorNode,
-			                 const QMatrix&   matrix = QMatrix(),
+			                 const QTransform& matrix = QTransform(),
 			                 bool             shadowState = false,
 			                 const Distance&  shadowX = 0,
 			                 const Distance&  shadowY = 0,

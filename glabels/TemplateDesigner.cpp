@@ -1,6 +1,6 @@
 /*  TemplateDesigner.cpp
  *
- *  Copyright (C) 2018  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2018  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -110,10 +110,10 @@ namespace glabels
 	/// Constructor
 	///
 	TemplateDesigner::TemplateDesigner( QWidget* parent )
-		: mIsBasedOnCopy(false), QWizard(parent)
+		: QWizard(parent)
 	{
 		setWindowTitle( tr("Product Template Designer") );
-		setPixmap( QWizard::LogoPixmap, QPixmap( ":icons/apps/48x48/glabels.svg" ) );
+		setPixmap( QWizard::LogoPixmap, QIcon::fromTheme( "glabels" ).pixmap( 48 ) );
 		setWizardStyle( QWizard::ModernStyle );
 		setOption( QWizard::IndependentPages, false );
 		setOption( QWizard::NoBackButtonOnStartPage, true );
@@ -1315,7 +1315,7 @@ namespace glabels
 			x0Spin->setRange( x0Min, x0Max );
 			y0Spin->setRange( y0Min, y0Max );
 			dxSpin->setRange( dxMin, dxMax );
-			dySpin->setRange( dyMin, dxMax );
+			dySpin->setRange( dyMin, dyMax );
 
 			static bool alreadyInitialized = false;
 			if ( !td->isBasedOnCopy() && !alreadyInitialized )

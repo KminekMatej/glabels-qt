@@ -1,6 +1,6 @@
 /*  LabelEditor.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -57,9 +57,9 @@ namespace glabels
 		// Signals
 		/////////////////////////////////////
 	signals:
-		void contextMenuActivate();
+		void contextMenuActivate( model::Point p );
 		void zoomChanged();
-		void pointerMoved( const model::Distance& x, const model::Distance& y );
+		void pointerMoved( model::Point p );
 		void pointerExited();
 		void modeChanged();
 
@@ -126,6 +126,9 @@ namespace glabels
 		void leaveEvent( QEvent* event ) override;
 		void keyPressEvent( QKeyEvent* event ) override;
 		void paintEvent( QPaintEvent* event ) override;
+		void dragEnterEvent( QDragEnterEvent *event ) override;
+		void dragMoveEvent( QDragMoveEvent *event ) override;
+		void dropEvent( QDropEvent *event ) override;
 
 
 		/////////////////////////////////////

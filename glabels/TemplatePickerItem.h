@@ -1,6 +1,6 @@
 /*  TemplatePickerItem.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -39,11 +39,21 @@ namespace glabels
 	public:
 		static const int SIZE = 80;
 
+		
 		/////////////////////////////////
 		// Life Cycle
 		/////////////////////////////////
 	public:
-		TemplatePickerItem( model::Template *tmplate, QListWidget *parent = nullptr );
+		TemplatePickerItem( model::Template*    tmplate,
+		                    QListView::ViewMode mode,
+		                    QListWidget*        parent = nullptr );
+
+
+		/////////////////////////////////
+		// Manipulate widget
+		/////////////////////////////////
+	public:
+		void setMode( QListView::ViewMode mode );
 
 
 		/////////////////////////////////

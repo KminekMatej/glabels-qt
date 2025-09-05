@@ -1,6 +1,6 @@
 /*  SelectProductDialog.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -23,8 +23,6 @@
 
 
 #include "ui_SelectProductDialog.h"
-
-#include <QBasicTimer>
 
 
 namespace glabels
@@ -60,17 +58,12 @@ namespace glabels
 		void onPageSizeCheckClicked();
 		void onCategoryRadioClicked();
 		void onCategoryCheckClicked();
+		void onViewModeButtonClicked();
 		void onTemplatePickerSelectionChanged();
+		void onSelectButtonClicked();
 		void onCancelButtonClicked();
 
 		
-		/////////////////////////////////
-		// Events
-		/////////////////////////////////
-	protected:
-		void timerEvent(QTimerEvent *event) override;
-
-
 		/////////////////////////////////
 		// Private methods
 		/////////////////////////////////
@@ -82,14 +75,12 @@ namespace glabels
 		// Private data
 		/////////////////////////////////
 	private:
-		QBasicTimer mTimer;
-
 		QMap<QCheckBox*,QString> mCheckToCategoryMap;
 		QList<QCheckBox*>        mCheckList;
 		QStringList              mCategoryIdList;
 
-		bool mCanceled;
-
+		bool                     mHasSelection { false };
+	  
 	};
 
 }

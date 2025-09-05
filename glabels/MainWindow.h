@@ -1,6 +1,6 @@
 /*  MainWindow.h
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -109,6 +109,7 @@ namespace glabels
 		void editCut();
 		void editCopy();
 		void editPaste();
+		void editContextPaste();
 		void editDelete();
 		void editSelectAll();
 		void editUnSelectAll();
@@ -142,6 +143,7 @@ namespace glabels
 		void objectsAlignTop();
 		void objectsAlignVCenter();
 		void objectsAlignBottom();
+		void objectsCenter();
 		void objectsCenterHoriz();
 		void objectsCenterVert();
 
@@ -149,10 +151,10 @@ namespace glabels
 		void helpReportBug();
 		void helpAbout();
 
-		void onContextMenuActivate();
+		void onContextMenuActivate( model::Point );
 
 		void onZoomChanged();
-		void onPointerMoved( double, double );
+		void onPointerMoved( model::Point );
 		void onPointerExit();
 
 		void onNameChanged();
@@ -301,6 +303,7 @@ namespace glabels
 		QAction*  objectsAlignTopAction;
 		QAction*  objectsAlignVCenterAction;
 		QAction*  objectsAlignBottomAction;
+		QAction*  objectsCenterAction;
 		QAction*  objectsCenterHorizAction;
 		QAction*  objectsCenterVertAction;
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="uk" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="uk">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -530,24 +530,8 @@
 <context>
     <name>PrintView</name>
     <message>
-        <source>Copies</source>
-        <translation>Копії</translation>
-    </message>
-    <message>
         <source>Copies:</source>
         <translation>Копій:</translation>
-    </message>
-    <message>
-        <source>Start on position:</source>
-        <translation>Розпочати з позиції:</translation>
-    </message>
-    <message>
-        <source>on 1st page</source>
-        <translation>на першій сторінці</translation>
-    </message>
-    <message>
-        <source>Print options</source>
-        <translation>Параметри друку</translation>
     </message>
     <message>
         <source>print outlines</source>
@@ -562,10 +546,6 @@
         <translation>друк на звороті (тобто з віддзеркаленням)</translation>
     </message>
     <message>
-        <source>Print</source>
-        <translation>Друк</translation>
-    </message>
-    <message>
         <source>Page</source>
         <translation>Сторінка</translation>
     </message>
@@ -576,6 +556,54 @@
     <message>
         <source>nn</source>
         <translation>nn</translation>
+    </message>
+    <message>
+        <source>Pages</source>
+        <translation>Сторінки</translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation>Параметри</translation>
+    </message>
+    <message>
+        <source>Print range</source>
+        <translation>Діапазон друку</translation>
+    </message>
+    <message>
+        <source>Positions</source>
+        <translation>Розташування</translation>
+    </message>
+    <message>
+        <source>to</source>
+        <translation>до</translation>
+    </message>
+    <message>
+        <source>Merge control</source>
+        <translation>Керування об&apos;єднанням</translation>
+    </message>
+    <message>
+        <source>Uncollated (e.g.  1,1,1   2,2,2   3,3,3)</source>
+        <translation>Без злиття (приклад:  1,1,1   2,2,2   3,3,3)</translation>
+    </message>
+    <message>
+        <source>Collated   (e.g.  1,2,3   1,2,3   1,2,3)</source>
+        <translation>Зі злиттям (приклад:  1,2,3   1,2,3   1,2,3)</translation>
+    </message>
+    <message>
+        <source>Merge groups are contiguous</source>
+        <translation>Об&apos;єднані групи неперервно</translation>
+    </message>
+    <message>
+        <source>Merge groups start on a new page</source>
+        <translation>Об&apos;єднані групи з нової сторінки</translation>
+    </message>
+    <message>
+        <source>Print...</source>
+        <translation>Надрукувати…</translation>
+    </message>
+    <message>
+        <source>Start groups at position:</source>
+        <translation>Розпочинати групи з позиції:</translation>
     </message>
 </context>
 <context>
@@ -734,16 +762,24 @@
         <translation>Вітаємо gLabels. Почнімо роботу:</translation>
     </message>
     <message>
-        <source>New Project</source>
-        <translation>Новий проєкт</translation>
-    </message>
-    <message>
         <source>Create a new blank gLabels project</source>
         <translation>Створити порожній проєкт gLabels</translation>
     </message>
     <message>
-        <source>Open Project</source>
-        <translation>Відкрити проєкт</translation>
+        <source>Open a recent gLabels project</source>
+        <translation>Відкрити нещодавній проєкт gLabels</translation>
+    </message>
+    <message>
+        <source>Recent</source>
+        <translation>Нещодавні</translation>
+    </message>
+    <message>
+        <source>New...</source>
+        <translation>Створити…</translation>
+    </message>
+    <message>
+        <source>Browse...</source>
+        <translation>Вибрати…</translation>
     </message>
     <message>
         <source>Open an existing gLabels project</source>

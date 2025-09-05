@@ -1,6 +1,6 @@
 /*  QtRenderer.h
  *
- *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of glbarcode++.
  *
@@ -76,7 +76,7 @@ namespace glbarcode
 		void drawEnd() override;
 		void drawLine( double x, double y, double w, double h ) override;
 		void drawBox( double x, double y, double w, double h ) override;
-		void drawText( double x, double y, double size, const std::string& text ) override;
+		void drawText( double x, double y, double size, const std::string& text, HAlign halign = H_ALIGN_CENTER ) override;
 		void drawRing( double x, double y, double r, double w ) override;
 		void drawHexagon( double x, double y, double h ) override;
 

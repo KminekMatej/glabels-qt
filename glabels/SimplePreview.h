@@ -1,6 +1,6 @@
 /*  SimplePreview.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -52,6 +52,7 @@ namespace glabels
 		/////////////////////////////////
 	public:
 		void setTemplate( const model::Template *tmplate );
+		void setShowArrow( bool showArrow );
 		void setRotate( bool rotateFlag );
 
 
@@ -77,10 +78,11 @@ namespace glabels
 		// Private Data
 		/////////////////////////////////
 	private:
-		const model::Template* mTmplate;
-		bool                   mRotateFlag;
+		const model::Template* mTmplate    { nullptr };
+		bool                   mShowArrow  { false };
+		bool                   mRotateFlag { false };
 
-		QGraphicsScene* mScene;
+		QGraphicsScene*        mScene { nullptr };
 
 	};
 

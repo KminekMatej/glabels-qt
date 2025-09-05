@@ -1,6 +1,6 @@
 /*  main.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -32,6 +32,7 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QIcon>
 #include <QLibraryInfo>
 #include <QLocale>
 #include <QTranslator>
@@ -47,11 +48,13 @@ int main( int argc, char **argv )
 	QCoreApplication::setApplicationName( "glabels-qt" );
 	QCoreApplication::setApplicationVersion( glabels::model::Version::LONG_STRING );
 
+	QIcon::setThemeName( "glabels-flat" );
+
 	//
 	// Setup translators
 	//
 	QLocale locale = QLocale::system();
-	QString qtTranslationsDir = QLibraryInfo::location( QLibraryInfo::TranslationsPath );
+	QString qtTranslationsDir = QLibraryInfo::path( QLibraryInfo::TranslationsPath );
 	QString myTranslationsDir = glabels::model::FileUtil::translationsDir().canonicalPath();
 	
 	QTranslator qtTranslator;

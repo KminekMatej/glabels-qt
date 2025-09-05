@@ -1,6 +1,6 @@
 /*  XmlTemplateParser.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -117,7 +117,7 @@ namespace glabels
 				QString name = XmlUtil::getStringAttr( node, "name", "" );
 				if ( name != "" )
 				{
-					QStringList fields = name.split( " ", QString::SkipEmptyParts );
+					QStringList fields = name.split( " ", Qt::SkipEmptyParts );
 					brand = fields[0];
 					part  = fields[1];
 				}

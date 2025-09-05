@@ -1,6 +1,6 @@
 /*  Frame.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -52,6 +52,7 @@ namespace glabels
 			Frame( const Frame& other );
 
 		public:
+			virtual ~Frame();
 			virtual Frame* dup() const = 0;
 
 			QString id() const;

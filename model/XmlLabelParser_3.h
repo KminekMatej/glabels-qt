@@ -1,6 +1,6 @@
 /*  XmlLabelParser_3.h
  *
- *  Copyright (C) 2014-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -74,7 +74,7 @@ namespace glabels
 			static QFont::Weight getWeightAttr( const QDomElement& node,
 					 const QString& name, const QFont::Weight default_value );
 
-			static QMatrix parseAffineTransformation(const QDomElement &node);
+			static QTransform parseAffineTransformation(const QDomElement &node);
 
 		};
 

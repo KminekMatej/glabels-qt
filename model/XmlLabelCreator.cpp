@@ -1,6 +1,6 @@
 /*  XmlLabelCreator.cpp
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -437,7 +437,7 @@ namespace glabels
 		void
 		XmlLabelCreator::createAffineAttrs( QDomElement &node, const ModelObject* object )
 		{
-			QMatrix a = object->matrix();
+			QTransform a = object->matrix();
 	
 			XmlUtil::setDoubleAttr( node, "a0", a.m11() );
 			XmlUtil::setDoubleAttr( node, "a1", a.m12() );

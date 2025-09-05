@@ -1,6 +1,6 @@
 /*  FrameContinuous.cpp
  *
- *  Copyright (C) 2018  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2018  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -90,17 +90,11 @@ namespace glabels
 			{
 				QString wStr = StrUtil::formatFraction( mW.in() );
 
-				return QString().sprintf( "%s %s %s",
-				                          qPrintable(wStr),
-				                          qPrintable(units.toTrName()),
-				                          qPrintable(tr("wide")) );
+				return QString("%1 %2 %3").arg(wStr).arg(units.toTrName()).arg(tr("wide"));
 			}
 			else
 			{
-				return QString().sprintf( "%.3f %s %s",
-				                          mW.inUnits(units),
-				                          qPrintable(units.toTrName()),
-				                          qPrintable(tr("wide")) );
+				return QString("%1 %2 %3").arg(mW.inUnits(units), 0, 'f', 3).arg(units.toTrName()).arg(tr("wide"));
 			}
 		}
 

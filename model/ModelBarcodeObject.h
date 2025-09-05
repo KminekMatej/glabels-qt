@@ -1,6 +1,6 @@
 /*  ModelBarcodeObject.h
  *
- *  Copyright (C) 2017  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2017  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -57,7 +57,7 @@ namespace glabels
 			                    bool                  bcChecksumFlag,
 			                    QString               bcData,
 			                    const ColorNode&      bcColorNode,
-			                    const QMatrix&        matrix = QMatrix() );
+			                    const QTransform&     matrix = QTransform() );
 
 			ModelBarcodeObject( const ModelBarcodeObject* object );
 

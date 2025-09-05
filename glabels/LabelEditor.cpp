@@ -1,6 +1,6 @@
 /*  LabelEditor.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -38,6 +38,7 @@
 #include "model/Markup.h"
 #include "model/Settings.h"
 
+#include <QMimeData>
 #include <QMouseEvent>
 #include <QtMath>
 #include <QtDebug>
@@ -67,7 +68,6 @@ namespace glabels
 
 		const QColor  gridLineColor( 192, 192, 192 );
 		const double  gridLineWidthPixels = 1;
-		const model::Distance gridSpacing = model::Distance::pt(9); // TODO: determine from locale.
 
 		const QColor  markupLineColor( 240, 99, 99 );
 		const double  markupLineWidthPixels = 1;
@@ -92,7 +92,6 @@ namespace glabels
 		mScale              = 1;
 		mMarkupVisible      = true;
 		mGridVisible        = true;
-		mGridSpacing        = 18;
 
 		mState = IdleState;
 
@@ -105,6 +104,7 @@ namespace glabels
 
 		setMouseTracking( true );
 		setFocusPolicy(Qt::StrongFocus);
+		setAcceptDrops( true );
 
 		connect( model::Settings::instance(), SIGNAL(changed()), this, SLOT(onSettingsChanged()) );
 		onSettingsChanged();
@@ -590,7 +590,7 @@ namespace glabels
 				//
 				if ( mState == IdleState )
 				{
-					emit contextMenuActivate();
+					emit contextMenuActivate( model::Point( xWorld, yWorld ) );
 				}
 			}
 		}
@@ -621,7 +621,7 @@ namespace glabels
 			/*
 			 * Emit signal regardless of mode
 			 */
-			emit pointerMoved( xWorld, yWorld );
+			emit pointerMoved( model::Point( xWorld, yWorld ) );
 
 
 			/*
@@ -1027,6 +1027,85 @@ namespace glabels
 	}
 
 
+	//
+	// Handle drag enter event
+	//
+	void LabelEditor::dragEnterEvent( QDragEnterEvent *event )
+	{
+		if ( event->mimeData()->hasUrls()   ||
+		     event->mimeData()->hasImage()  ||
+		     event->mimeData()->hasText() )
+		{
+			event->acceptProposedAction();
+		}
+		else
+		{
+			event->ignore();
+		}
+	}
+
+
+	//
+	// Handle drag move event
+	//
+	void LabelEditor::dragMoveEvent( QDragMoveEvent *event )
+	{
+		if ( event->mimeData()->hasUrls()   ||
+		     event->mimeData()->hasImage()  ||
+		     event->mimeData()->hasText() )
+		{
+			event->acceptProposedAction();
+		}
+		else
+		{
+			event->ignore();
+		}
+	}
+
+
+	//
+	// Handle drop event
+	//
+	void LabelEditor::dropEvent( QDropEvent *event )
+	{
+		/*
+		 * Transform to label coordinates
+		 */
+		QTransform transform;
+
+		transform.scale( mScale, mScale );
+		transform.translate( mX0.pt(), mY0.pt() );
+
+		QPointF pWorld = transform.inverted().map( event->position() );
+		auto xWorld = model::Distance::pt( pWorld.x() );
+		auto yWorld = model::Distance::pt( pWorld.y() );
+		auto p = model::Point( xWorld, yWorld );
+
+		if ( event->mimeData()->hasUrls() )
+		{
+			mUndoRedoModel->checkpoint( tr("Drop") );
+			mModel->pasteAsUrls( event->mimeData(), p );
+			event->acceptProposedAction();
+		}
+		else if ( event->mimeData()->hasImage() )
+		{
+			mUndoRedoModel->checkpoint( tr("Drop") );
+			mModel->pasteAsImage( event->mimeData(), p );
+			event->acceptProposedAction();
+		}
+		else if ( event->mimeData()->hasText() )
+		{
+			mUndoRedoModel->checkpoint( tr("Drop") );
+			mModel->pasteAsText( event->mimeData(), p );
+			event->acceptProposedAction();
+		}
+		else
+		{
+			event->ignore();
+		}
+	}
+
+
 	///
 	/// Draw Background Layer
 	///
@@ -1080,18 +1159,20 @@ namespace glabels
 	{
 		if ( mGridVisible )
 		{
+			auto gridSpacing = model::Settings::gridSpacing();
+			auto gridOrigin  = model::Settings::gridOrigin();
+
+			bool isRectangular = dynamic_cast<const model::FrameRect*>( mModel->frame() );
+			
 			model::Distance w = mModel->frame()->w();
 			model::Distance h = mModel->frame()->h();
 
-			model::Distance x0, y0;
-			if ( dynamic_cast<const model::FrameRect*>( mModel->frame() ) )
+			// Set origin of grid.  For non-rectangular labels (e.g. round, cd, etc.),
+			// ignore the gridOrigin setting and always use the center of the label.
+			auto x0 = gridSpacing;
+			auto y0 = gridSpacing;
+			if ( gridOrigin == model::Settings::ORIGIN_CENTER || !isRectangular )
 			{
-				x0 = gridSpacing;
-				y0 = gridSpacing;
-			}
-			else
-			{
-				/* round labels, adjust grid to line up with center of label. */
 				x0 = fmod( w/2, gridSpacing );
 				y0 = fmod( h/2, gridSpacing );
 			}
@@ -1244,6 +1325,8 @@ namespace glabels
 		model::Units units = model::Settings::units();
 	
 		mStepSize = model::Distance( units.resolution(), units );
+
+		update();
 	}
 
 
@@ -1282,5 +1365,6 @@ namespace glabels
 
 		emit zoomChanged();
 	}
+
 
 } // namespace glabels

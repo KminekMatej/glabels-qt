@@ -1,6 +1,6 @@
 /*  ModelEllipseObject.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -58,7 +58,7 @@ namespace glabels
 		                                        const Distance&  lineWidth,
 		                                        const ColorNode& lineColorNode,
 		                                        const ColorNode& fillColorNode,
-		                                        const QMatrix&   matrix,
+		                                        const QTransform& matrix,
 		                                        bool             shadowState,
 		                                        const Distance&  shadowX,
 		                                        const Distance&  shadowY,

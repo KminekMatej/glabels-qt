@@ -1,6 +1,6 @@
 /*  Distance.h
  *
- *  Copyright (C) 2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -65,7 +65,6 @@ namespace glabels
 			QString toString( const Units& units ) const;
 			QString toString( Units::Enum unitsEnum ) const;
 			QString toString( const QString& unitsId ) const;
-
 
 			Distance& operator+=( const Distance& d );
 			Distance& operator-=( const Distance& d );

@@ -1,6 +1,6 @@
 /*  Model.h
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -31,6 +31,7 @@
 
 #include <QDir>
 #include <QList>
+#include <QMimeData>
 #include <QObject>
 #include <QPainter>
 
@@ -184,6 +185,7 @@ namespace glabels
 			void alignSelectionTop();
 			void alignSelectionBottom();
 			void alignSelectionVCenter();
+			void centerSelection();
 			void centerSelectionHoriz();
 			void centerSelectionVert();
 			void moveSelection( const Distance& dx, const Distance& dy );
@@ -206,8 +208,12 @@ namespace glabels
 			void copySelection();
 			void cutSelection();
 			bool canPaste();
-			void paste();
-	
+			void paste( Point p );
+			void pasteAsNativeObjects( const QMimeData* mimeData, Point p );
+			void pasteAsUrls( const QMimeData* mimeData, Point p );
+			void pasteAsImage( const QMimeData* mimeData, Point p );
+			void pasteAsText( const QMimeData* mimeData, Point p );
+
 			/////////////////////////////////
 			// Drawing operations
 			/////////////////////////////////
@@ -233,11 +239,11 @@ namespace glabels
 			// Private data
 			/////////////////////////////////
 		private:
-			int                       mUntitledInstance;
-			bool                      mModified;
+			int                       mUntitledInstance{0};
+			bool                      mModified{true};
 			QString                   mFileName;
 			Template                  mTmplate;
-			bool                      mRotate;
+			bool                      mRotate{false};
 
 			QList<ModelObject*>       mObjectList;
 

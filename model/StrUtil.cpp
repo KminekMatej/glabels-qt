@@ -1,6 +1,6 @@
 /*  StrUtil.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -61,12 +61,12 @@ namespace glabels
 				if ( denom[i] == 0.0 )
 				{
 					/* None of our denominators work. */
-					return QString().sprintf( "%.3f", x );
+					return QString("%1").arg(x, 0, 'f', 3 );
 				}
 				if ( denom[i] == 1.0 )
 				{
 					/* Simple integer. */
-					return QString().sprintf( "%.0f", x );
+					return QString("%1").arg(x, 0, 'f', 0);
 				}
 				auto n = int( x * denom[i] + 0.5 );
 				auto d = int( denom[i] );

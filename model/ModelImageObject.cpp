@@ -1,6 +1,6 @@
 /*  ModelImageObject.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -73,6 +73,8 @@ namespace glabels
 			{
 				smDefaultImage = new QImage( ":images/checkerboard.png" );
 			}
+
+			mLockAspectRatio = true;
 		}
 
 
@@ -85,7 +87,7 @@ namespace glabels
 		                                    const Distance&  h,
 		                                    bool             lockAspectRatio,
 		                                    const TextNode&  filenameNode,
-		                                    const QMatrix&   matrix,
+		                                    const QTransform& matrix,
 		                                    bool             shadowState,
 		                                    const Distance&  shadowX,
 		                                    const Distance&  shadowY,
@@ -130,7 +132,7 @@ namespace glabels
 		                                    bool             lockAspectRatio,
 		                                    const QString&   filename,
 		                                    const QImage&    image,
-		                                    const QMatrix&   matrix,
+		                                    const QTransform& matrix,
 		                                    bool             shadowState,
 		                                    const Distance&  shadowX,
 		                                    const Distance&  shadowY,
@@ -172,7 +174,7 @@ namespace glabels
 		                                    bool              lockAspectRatio,
 		                                    const QString&    filename,
 		                                    const QByteArray& svg,
-		                                    const QMatrix&    matrix,
+		                                    const QTransform& matrix,
 		                                    bool              shadowState,
 		                                    const Distance&   shadowX,
 		                                    const Distance&   shadowY,
@@ -316,7 +318,7 @@ namespace glabels
 				}
 
 				mImage = new QImage(value);
-				quint16 cs = qChecksum( (const char*)mImage->constBits(), mImage->byteCount() );
+				quint16 cs = qChecksum( QByteArray( (const char*)mImage->constBits(), mImage->sizeInBytes() ) );
 				mFilenameNode = TextNode( false, QString("%image_%1%").arg( cs ) );
 
 				emit changed();

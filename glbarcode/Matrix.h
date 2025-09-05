@@ -1,6 +1,6 @@
 /*  Matrix.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of glbarcode++.
  *
@@ -116,16 +116,7 @@ namespace glbarcode
 		/**
 		 * Indirection "[]" operator
 		 */
-		inline T* operator[]( int i )
-		{
-			return (mData + (mNx * i));
-		}
-
-
-		/**
-		 * Indirection "[]" operator
-		 */
-		inline T const*const operator[]( int i ) const
+		inline T* operator[]( int i ) const
 		{
 			return (mData + (mNx * i));
 		}

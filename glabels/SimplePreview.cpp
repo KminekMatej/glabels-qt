@@ -1,6 +1,6 @@
 /*  SimplePreview.cpp
  *
- *  Copyright (C) 2013-2016  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013-2016  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -17,6 +17,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with gLabels-qt.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 
 #include "SimplePreview.h"
 
@@ -61,7 +62,7 @@ namespace glabels
 	/// Constructor
 	///
 	SimplePreview::SimplePreview( QWidget *parent )
-		: QGraphicsView(parent), mTmplate(nullptr), mRotateFlag(false)
+		: QGraphicsView(parent)
 	{
 		mScene = new QGraphicsScene();
 		setScene( mScene );
@@ -80,6 +81,16 @@ namespace glabels
 	void SimplePreview::setTemplate( const model::Template *tmplate )
 	{
 		mTmplate = tmplate;
+		update();
+	}
+
+
+	///
+	/// Show Arrow Property Setter
+	///
+	void SimplePreview::setShowArrow( bool showArrow )
+	{
+		mShowArrow = showArrow;
 		update();
 	}
 
@@ -132,7 +143,10 @@ namespace glabels
 
 			drawPaper();
 			drawLabels();
-			drawArrow();
+			if ( mShowArrow )
+			{
+				drawArrow();
+			}
 		}
 	}
 

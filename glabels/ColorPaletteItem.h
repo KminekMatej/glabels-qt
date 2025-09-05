@@ -1,6 +1,6 @@
 /*  ColorPaletteItem.h
  *
- *  Copyright (C) 2014  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2014  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of gLabels-qt.
  *
@@ -67,7 +67,7 @@ namespace glabels
 		/////////////////////////////////
 	protected:
 		void paintEvent( QPaintEvent* event ) override;
-		void enterEvent( QEvent* event ) override;
+		void enterEvent( QEnterEvent* event ) override;
 		void leaveEvent( QEvent* event ) override;
 		void mousePressEvent( QMouseEvent* event ) override;
 

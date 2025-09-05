@@ -1,6 +1,6 @@
 /*  Barcode.cpp
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of glbarcode++.
  *
@@ -174,9 +174,9 @@ namespace glbarcode
 	}
 
 
-	void Barcode::addText( double x, double y, double size, const std::string& text )
+	void Barcode::addText( double x, double y, double size, const std::string& text, HAlign halign )
 	{
-		d->mPrimitives.push_back( new DrawingPrimitiveText( x, y, size, text ) );
+		d->mPrimitives.push_back( new DrawingPrimitiveText( x, y, size, text, halign ) );
 	}
 
 

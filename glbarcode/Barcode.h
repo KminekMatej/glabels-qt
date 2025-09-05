@@ -1,6 +1,6 @@
 /*  Barcode.h
  *
- *  Copyright (C) 2013  Jim Evins <evins@snaught.com>
+ *  Copyright (C) 2013  Jaye Evins <evins@snaught.com>
  *
  *  This file is part of glbarcode++.
  *
@@ -24,6 +24,7 @@
 
 #include <string>
 
+#include "Enums.h"
 #include "Renderer.h"
 
 
@@ -215,12 +216,13 @@ namespace glbarcode
 		 *
 		 * @image html figure-primitive-text.svg "Text primitive properties"
 		 *
-		 * @param[in] x     X coordinate of text's origin (points)
-		 * @param[in] y     Y coordinate of text's origin (points)
-		 * @param[in] size  Font size of text (points)
-		 * @param[in] text  Text
+		 * @param[in] x       X coordinate of text's origin (points)
+		 * @param[in] y       Y coordinate of text's origin (points)
+		 * @param[in] size    Font size of text (points)
+		 * @param[in] text    Text
+		 * @param[in] halign  Horizontal text alignment
 		 */
-		void addText( double x, double y, double size, const std::string& text );
+		void addText( double x, double y, double size, const std::string& text, HAlign halign = H_ALIGN_CENTER );
 
 
 		/**
